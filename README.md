@@ -30,7 +30,7 @@ ___
 ```
 对于非涂鸦线条来说，编辑可以是平移也可以拖拽头部和尾部，以上6个方法分别对应选中和非选中状态下的三种编辑方法。
 
-	- (void)moveGrafiitiPathPreviousPoint:(CGPoint)previousPoint currentPoint:		(CGPoint)currentPoint;
+	- (void)moveGrafiitiPathPreviousPoint:(CGPoint)previousPoint currentPoint:(CGPoint)currentPoint;
 这是对涂鸦的平移方法，涂鸦只能平移。
 
 	- (void)addToTrack;
