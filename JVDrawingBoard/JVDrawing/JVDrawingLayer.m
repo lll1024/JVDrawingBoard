@@ -57,8 +57,7 @@
     CGFloat distanceEnd = [self distanceBetweenStartPoint:point endPoint:self.endPoint];
     CGFloat distance = [self distanceBetweenStartPoint:self.startPoint endPoint:self.endPoint];
     CGFloat diffrence = distanceStart + distanceEnd - distance;
-    if (diffrence <= JVDRAWINGBUFFER || distanceStart <= JVDRAWINGBUFFER || distanceEnd <= JVDRAWINGBUFFER) return YES;
-    return NO;
+    return diffrence <= JVDRAWINGBUFFER || distanceStart <= JVDRAWINGBUFFER || distanceEnd <= JVDRAWINGBUFFER;
 }
 
 - (NSInteger)caculateLocationWithPoint:(CGPoint)point {
@@ -96,6 +95,8 @@
     layer.type = type;
     if (JVDrawingTypeGraffiti == type) {
         UIBezierPath *path = [UIBezierPath bezierPath];
+        path.lineJoinStyle = kCGLineJoinRound;
+        path.flatness = 0.1;
         [path moveToPoint:startPoint];
         layer.path = path.CGPath;
         layer.pointArray = [NSMutableArray arrayWithObject:[NSValue valueWithCGPoint:startPoint]];
@@ -269,7 +270,6 @@
     [self.pointArray addObject:[NSValue valueWithCGPoint:endPoint]];
 }
 
-#pragma mark **************** 创建生成双杠的Path
 - (UIBezierPath *)createRulerLinePathWithEndPoint:(CGPoint)endPoint andStartPoint:(CGPoint)startPoint length:(CGFloat)length
 {
     UIBezierPath *bezierPath = [UIBezierPath bezierPath];

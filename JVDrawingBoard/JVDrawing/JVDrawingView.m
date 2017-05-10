@@ -41,8 +41,8 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    self.isFirstTouch = YES;
-    self.isMoveLayer = NO;
+    self.isFirstTouch = YES;//是否第一次点击屏幕
+    self.isMoveLayer = NO;//是否移动layer
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -51,15 +51,15 @@
     CGPoint previousPoint = [touch previousLocationInView:self];
     if (self.isFirstTouch) {
         if (self.selectedLayer && [self.selectedLayer caculateLocationWithPoint:currentPoint]) {
-            self.isMoveLayer = [self.selectedLayer caculateLocationWithPoint:currentPoint];
+            self.isMoveLayer = [self.selectedLayer caculateLocationWithPoint:currentPoint];//计算当前point是否在已绘制的shapes里边
         } else {
-            self.drawingLayer = [JVDrawingLayer createLayerWithStartPoint:previousPoint type:self.type];
+            self.drawingLayer = [JVDrawingLayer createLayerWithStartPoint:previousPoint type:self.type];//创建相应的layer
             [self.layer addSublayer:self.drawingLayer];
         }
     } else {
         if (self.isMoveLayer) {
             if (self.selectedLayer.type == JVDrawingTypeGraffiti) {
-                [self.selectedLayer moveGrafiitiPathPreviousPoint:previousPoint currentPoint:currentPoint];
+                [self.selectedLayer moveGrafiitiPathPreviousPoint:previousPoint currentPoint:currentPoint];//平移涂鸦shape
             } else {
                 switch (self.isMoveLayer) {
                     case JVDrawingTouchHead:
@@ -77,7 +77,7 @@
                 }
             }
         } else {
-            [self.drawingLayer movePathWithEndPoint:currentPoint];
+            [self.drawingLayer movePathWithEndPoint:currentPoint];//绘制新创建的shape
         }
     }
     
