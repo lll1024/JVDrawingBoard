@@ -85,7 +85,7 @@
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    if (![self.layerArray containsObject:self.drawingLayer]) {
+    if (![self.layerArray containsObject:self.drawingLayer] && !self.isFirstTouch) {
         [self.layerArray addObject:self.drawingLayer];
         [self.drawingLayer addToTrack];
     } else {
