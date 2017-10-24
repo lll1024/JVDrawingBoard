@@ -1,7 +1,7 @@
 # JVDrawingBoard
 ___
 ## 效果图
-![](https://github.com/lll1024/JVDrawingBoard/blob/master/gif/2017-05-05%2009.57.45.gif)
+<img src="https://github.com/lll1024/JVDrawingBoard/blob/master/gif/2017-05-05%2009.57.45.gif" width="320" height="568" alt=""/>
 
 ## 说明
 这是一个简洁的小画板 可以画双箭头、单箭头、涂鸦等 还可以编辑和撤销。总共包含两个类：
